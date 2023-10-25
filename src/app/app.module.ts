@@ -1,5 +1,5 @@
 import { AccountConfigModule } from '@abp/ng.account/config';
-import { CoreModule } from '@abp/ng.core';
+import { CoreModule, ListService } from '@abp/ng.core';
 import { registerLocale } from '@abp/ng.core/locale';
 import { IdentityConfigModule } from '@abp/ng.identity/config';
 import { SettingManagementConfigModule } from '@abp/ng.setting-management/config';
@@ -17,6 +17,7 @@ import { APP_ROUTE_PROVIDER } from './route.provider';
 import { FeatureManagementModule } from '@abp/ng.feature-management';
 import { AbpOAuthModule } from '@abp/ng.oauth';
 import { AccountLayoutModule } from '@abp/ng.theme.lepton-x/account';
+import { AirportModule } from './airport/airport.module';
 
 @NgModule({
   imports: [
@@ -39,6 +40,7 @@ import { AccountLayoutModule } from '@abp/ng.theme.lepton-x/account';
               ThemeLeptonXModule.forRoot(),
               SideMenuLayoutModule.forRoot(),
               AccountLayoutModule.forRoot(),
+              AirportModule,
   ],
   declarations: [AppComponent],
   providers: [APP_ROUTE_PROVIDER],

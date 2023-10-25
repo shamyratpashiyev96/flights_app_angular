@@ -1,4 +1,4 @@
-import { RoutesService, eLayoutType } from '@abp/ng.core';
+import { PermissionDirective, PermissionService, RoutesService, eLayoutType } from '@abp/ng.core';
 import { APP_INITIALIZER } from '@angular/core';
 
 export const APP_ROUTE_PROVIDER = [
@@ -13,6 +13,20 @@ function configureRoutes(routesService: RoutesService) {
         name: '::Menu:Home',
         iconClass: 'fas fa-home',
         order: 1,
+        layout: eLayoutType.application,
+      },
+      { 
+        path: "/flights-control",
+        name: "::Menu:FlightControl", 
+        iconClass: "fa fa-book", 
+        order: 2, 
+        layout: eLayoutType.application
+      },
+      {
+        path: "/airports",
+        name: "::Menu:Airports",
+        parentName: "::Menu:FlightControl",
+        iconClass: "fa fa-building",
         layout: eLayoutType.application,
       },
     ]);
