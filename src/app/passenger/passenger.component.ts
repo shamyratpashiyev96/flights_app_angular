@@ -5,6 +5,7 @@ import { PageEvent } from '@angular/material/paginator';
 import { Sort } from '@angular/material/sort';
 import { PassengerDto, PassengerService } from '@proxy/passengers';
 import { PassengerDialogComponent } from './components/passenger-dialog/passenger-dialog.component';
+import { ConfirmationDialogComponent } from '../shared/components/confirmation-dialog/confirmation-dialog.component';
 
 @Component({
   selector: 'app-passenger',
@@ -66,5 +67,20 @@ export class PassengerComponent implements OnInit{
       });
     });
 
+  }
+
+  deletePassenger(id: number) {
+    const confirmationDialogRef = this.dialog.open(ConfirmationDialogComponent,{
+      data: {
+        title: "::AreYouSure",
+        description: "::AreYouSureToDelete"
+      }
+    });
+
+    confirmationDialogRef.afterClosed().subscribe((confirmationResult)=>{
+      if(confirmationResult){
+        this.passengerService.delete(id).subscribe(()=>this.list.get());
+      }
+    });
   }
 }

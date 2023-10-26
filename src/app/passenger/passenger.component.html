@@ -2,7 +2,7 @@
     <mat-card-header class="w-100">
         <mat-card-title-group class="w-100">
             <mat-card-title class="abp-card-title">
-                {{'::Menu:Airports' | abpLocalization}}
+                {{'::Menu:Passengers' | abpLocalization}}
             </mat-card-title>
             <button
                 id="create"
@@ -64,6 +64,9 @@
     <ng-template matMenuContent let-id="id">
         <button mat-menu-item (click)="editPassenger(id)">
             {{ '::Edit' | abpLocalization }}
+        </button>
+        <button mat-menu-item (click)="deletePassenger(id)">
+            {{ '::Delete' | abpLocalization }}
         </button>
     </ng-template>
 </mat-menu>
