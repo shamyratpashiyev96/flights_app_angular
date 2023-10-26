@@ -1,4 +1,6 @@
-<h2 mat-dialog-title>{{ '::NewAirport' | abpLocalization }}</h2>
+<h2 mat-dialog-title>
+    {{ (data ? '::EditAirport' : '::NewAirport') | abpLocalization }}
+</h2>
 <mat-dialog-content>
     <form [formGroup]="form" class="form-container">
         <mat-form-field class="w-100">

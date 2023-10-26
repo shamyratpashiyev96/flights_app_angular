@@ -17,6 +17,7 @@ import { MatInputModule } from "@angular/material/input";
 import { MatSelectModule } from "@angular/material/select";
 import { MatIconModule } from "@angular/material/icon";
 import { MatNativeDateModule } from "@angular/material/core";
+import { MatMenuModule } from "@angular/material/menu";
 
 
 
@@ -41,6 +42,8 @@ import { MatNativeDateModule } from "@angular/material/core";
     MatInputModule,
     MatSelectModule,
     MatIconModule,
+
+    MatMenuModule,
   ],
   exports: [
     CoreModule,
@@ -60,6 +63,8 @@ import { MatNativeDateModule } from "@angular/material/core";
     MatInputModule,
     MatSelectModule,
     MatIconModule,
+
+    MatMenuModule,
   ],
   providers: []
 })

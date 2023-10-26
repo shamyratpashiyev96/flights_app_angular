@@ -13,7 +13,7 @@ import{ MatDialog } from "@angular/material/dialog";
 })
 export class AirportComponent implements OnInit{
   airport = { items: [], totalCount: 0 } as PagedResultDto<AirportDto>;
-  columns: string[] = ["city", "code" ];
+  columns: string[] = ["actions","city", "code" ];
 
   constructor(
     public readonly list: ListService,
@@ -48,6 +48,24 @@ export class AirportComponent implements OnInit{
           this.list.get();
         });
       }
+    });
+  }
+
+  editBook(id: number) {
+    this.airportService.get(id).subscribe((airportObj) => {
+      const dialogRef = this.dialog.open(AirportDialogComponent, {
+        data: airportObj
+      });
+      dialogRef.afterClosed().subscribe(result => {
+
+        if(result) {
+          this.airportService.update(id, result).subscribe(() => {
+            this.list.get();
+          });
+        }
+
+      });
+
     });
   }
 }
