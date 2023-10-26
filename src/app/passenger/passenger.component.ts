@@ -13,7 +13,7 @@ import { PassengerDialogComponent } from './components/passenger-dialog/passenge
 })
 export class PassengerComponent implements OnInit{
   passenger = { items: [], totalCount: 0 } as PagedResultDto<PassengerDto>;
-  columns: string[] = ["firstName","lastName"]; 
+  columns: string[] = ['actions',"firstName","lastName"]; 
 
   constructor(
     public readonly list: ListService,
@@ -49,5 +49,22 @@ export class PassengerComponent implements OnInit{
         });
       }
     });
+  }
+
+  editPassenger(id: number) : void{
+    this.passengerService.get(id).subscribe((passengerObj)=> {
+
+      const dialogRef = this.dialog.open(PassengerDialogComponent, { data: passengerObj });
+      dialogRef.afterClosed().subscribe((result) => {
+
+        if(result){
+          this.passengerService.update(id,result).subscribe(()=>{
+            this.list.get();
+          });
+        }
+
+      });
+    });
+
   }
 }
