@@ -1,8 +1,10 @@
 import { ListService, PagedResultDto } from '@abp/ng.core';
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { PageEvent } from '@angular/material/paginator';
 import { Sort } from '@angular/material/sort';
 import { PassengerDto, PassengerService } from '@proxy/passengers';
+import { PassengerDialogComponent } from './components/passenger-dialog/passenger-dialog.component';
 
 @Component({
   selector: 'app-passenger',
@@ -15,7 +17,8 @@ export class PassengerComponent implements OnInit{
 
   constructor(
     public readonly list: ListService,
-    private passengerService: PassengerService
+    private passengerService: PassengerService,
+    public dialog: MatDialog
   ){
     this.list.maxResultCount = 2;
   }
@@ -37,4 +40,14 @@ export class PassengerComponent implements OnInit{
     this.list.sortOrder = sort.direction;
   }
 
+  createPassenger() {
+    const dialogRef = this.dialog.open(PassengerDialogComponent);
+    dialogRef.afterClosed().subscribe((result) => {
+      if(result){
+        this.passengerService.create(result).subscribe(() => {
+          this.list.get();
+        });
+      }
+    });
+  }
 }

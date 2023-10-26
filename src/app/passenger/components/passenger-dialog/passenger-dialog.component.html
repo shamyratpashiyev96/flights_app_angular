@@ -1,0 +1,28 @@
+<h2 mat-dialog-title> {{ '::NewPassenger' | abpLocalization }} </h2>
+<mat-dialog-content>
+    <form [formGroup]="form" class="form-container">
+        <mat-form-field class="w-100">
+            <mat-label>
+                {{ '::firstName' | abpLocalization }} 
+                <span> * </span>
+            </mat-label>
+            <input type="text" id="passenger-firstName" matInput formControlName="firstName">
+        </mat-form-field>
+        <mat-form-field class="w-100">
+            <mat-label>
+                {{ '::lastName' | abpLocalization }} 
+                <span> * </span>
+            </mat-label>
+            <input type="text" id="passenger-lastName" matInput formControlName="lastName">
+        </mat-form-field>
+    </form>
+</mat-dialog-content>
+<mat-dialog-actions>
+    <button mat-button mat-dialog-close>
+        {{ '::Close' | abpLocalization }}
+    </button>
+    <button mat-raised-button color="primary" [mat-dialog-close]="getFormValue()">
+        {{ '::Save' | abpLocalization }}
+    </button>
+    
+</mat-dialog-actions>
