@@ -5,6 +5,7 @@ import{ PageEvent } from "@angular/material/paginator";
 import{ Sort } from "@angular/material/sort";
 import { AirportDialogComponent } from './components/airport-dialog/airport-dialog.component';
 import{ MatDialog } from "@angular/material/dialog";
+import { ConfirmationDialogComponent } from '../shared/components/confirmation-dialog/confirmation-dialog.component';
 
 @Component({
   selector: 'app-airport',
@@ -66,6 +67,20 @@ export class AirportComponent implements OnInit{
 
       });
 
+    });
+  }
+
+  deleteBook(id: number) {
+    const confirmationDialogRef = this.dialog.open(ConfirmationDialogComponent, {
+      data: {
+        title: '::AreYouSure',
+        description: '::AreYouSureToDelete'
+      }
+    });
+    confirmationDialogRef.afterClosed().subscribe(confirmationResult => {
+      if (confirmationResult) {
+        this.airportService.delete(id).subscribe(() => this.list.get());
+      }
     });
   }
 }

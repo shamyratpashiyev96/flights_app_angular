@@ -18,11 +18,14 @@ import { MatSelectModule } from "@angular/material/select";
 import { MatIconModule } from "@angular/material/icon";
 import { MatNativeDateModule } from "@angular/material/core";
 import { MatMenuModule } from "@angular/material/menu";
+import { ConfirmationDialogComponent } from './components/confirmation-dialog/confirmation-dialog.component';
 
 
 
 @NgModule({
-  declarations: [],
+  declarations: [
+    ConfirmationDialogComponent
+  ],
   imports: [
     CoreModule,
     ThemeSharedModule,
