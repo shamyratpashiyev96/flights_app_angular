@@ -29,6 +29,13 @@ function configureRoutes(routesService: RoutesService) {
         iconClass: "fa fa-building",
         layout: eLayoutType.application,
       },
+      {
+        path: "/passengers",
+        name: "::Menu:Passengers",
+        parentName: "::Menu:FlightControl",
+        iconClass: "fa fa-building",
+        layout: eLayoutType.application,
+      },
     ]);
   };
 }
