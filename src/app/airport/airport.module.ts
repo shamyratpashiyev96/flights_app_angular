@@ -4,11 +4,13 @@ import { AirportRoutingModule } from './airport-routing.module';
 import { AirportComponent } from './airport.component';
 import { SharedModule } from '../shared/shared.module';
 import { ListService } from '@abp/ng.core';
+import { AirportDialogComponent } from './components/airport-dialog/airport-dialog.component';
 
 
 @NgModule({
   declarations: [
-    AirportComponent
+    AirportComponent,
+    AirportDialogComponent
   ],
   imports: [
     SharedModule,

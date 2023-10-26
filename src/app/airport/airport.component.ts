@@ -3,6 +3,8 @@ import { Component, OnInit, inject } from '@angular/core';
 import { AirportDto, AirportService } from '@proxy/airports';
 import{ PageEvent } from "@angular/material/paginator";
 import{ Sort } from "@angular/material/sort";
+import { AirportDialogComponent } from './components/airport-dialog/airport-dialog.component';
+import{ MatDialog } from "@angular/material/dialog";
 
 @Component({
   selector: 'app-airport',
@@ -15,7 +17,8 @@ export class AirportComponent implements OnInit{
 
   constructor(
     public readonly list: ListService,
-    private airportService: AirportService
+    private airportService: AirportService,
+    public dialog : MatDialog
   ){
     this.list.maxResultCount = 2;
   }
@@ -35,5 +38,16 @@ export class AirportComponent implements OnInit{
   changeSort(sort: Sort) {
     this.list.sortKey = sort.active;
     this.list.sortOrder = sort.direction;
+  }
+
+  createAirport() {
+    const dialogRef = this.dialog.open(AirportDialogComponent);
+    dialogRef.afterClosed().subscribe((result) => {
+      if(result) {
+        this.airportService.create(result).subscribe(() => {
+          this.list.get();
+        });
+      }
+    });
   }
 }

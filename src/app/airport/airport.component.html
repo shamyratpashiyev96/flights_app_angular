@@ -4,6 +4,16 @@
             <mat-card-title class="abp-card-title">
                 {{'::Menu:Airports'|abpLocalization}}
             </mat-card-title>
+            <button
+                id="create"
+                mat-raised-button
+                color="primary"
+                type="button"
+                (click)="createAirport()"
+            >
+                <i class="fa fa-plus mr-1"></i>
+                <span>{{ "::NewAirport" | abpLocalization }}</span>
+            </button>
         </mat-card-title-group>
     </mat-card-header>
 

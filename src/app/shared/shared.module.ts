@@ -10,6 +10,15 @@ import { MatPaginatorModule } from "@angular/material/paginator";
 import { MatSortModule } from "@angular/material/sort";
 import { MatButtonModule } from "@angular/material/button";
 
+import { MatDialogModule } from "@angular/material/dialog";
+import { MatDatepickerModule } from "@angular/material/datepicker";
+import { MatFormFieldModule } from "@angular/material/form-field";
+import { MatInputModule } from "@angular/material/input";
+import { MatSelectModule } from "@angular/material/select";
+import { MatIconModule } from "@angular/material/icon";
+import { MatNativeDateModule } from "@angular/material/core";
+
+
 
 @NgModule({
   declarations: [],
@@ -24,6 +33,14 @@ import { MatButtonModule } from "@angular/material/button";
     MatPaginatorModule,
     MatSortModule,
     MatButtonModule,
+
+    MatDialogModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatSelectModule,
+    MatIconModule,
   ],
   exports: [
     CoreModule,
@@ -36,6 +53,13 @@ import { MatButtonModule } from "@angular/material/button";
     MatPaginatorModule,
     MatSortModule,
     MatButtonModule,
+
+    MatDialogModule,
+    MatDatepickerModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatSelectModule,
+    MatIconModule,
   ],
   providers: []
 })
