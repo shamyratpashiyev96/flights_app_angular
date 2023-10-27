@@ -27,6 +27,7 @@ const routes: Routes = [
   },
   { path: 'airports', loadChildren: () => import('./airport/airport.module').then(m => m.AirportModule) },
   { path: 'passengers', loadChildren: () => import('./passenger/passenger.module').then(m => m.PassengerModule) },
+  { path: 'flights', loadChildren: () => import('./flight/flight.module').then(m => m.FlightModule) },
 ];
 
 @NgModule({

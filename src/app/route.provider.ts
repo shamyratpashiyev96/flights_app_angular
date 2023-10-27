@@ -36,6 +36,13 @@ function configureRoutes(routesService: RoutesService) {
         iconClass: "fa fa-building",
         layout: eLayoutType.application,
       },
+      {
+        path: "/flights",
+        name: "::Menu:Flights",
+        parentName: "::Menu:FlightControl",
+        iconClass: "fa fa-plane",
+        layout: eLayoutType.application,
+      },
     ]);
   };
 }
