@@ -5,6 +5,7 @@ import { PageEvent } from '@angular/material/paginator';
 import { Sort } from '@angular/material/sort';
 import { FlightDto, FlightService } from '@proxy/flights';
 import { FlightDialogComponent } from './components/flight-dialog/flight-dialog.component';
+import { ConfirmationDialogComponent } from '../shared/components/confirmation-dialog/confirmation-dialog.component';
 
 @Component({
   selector: 'app-flight',
@@ -69,6 +70,21 @@ export class FlightComponent implements OnInit{
           });
         }
       });
+    });
+  }
+
+  deleteFlight(id: number){
+    const confirmationDialogRef = this.dialog.open(ConfirmationDialogComponent,{
+      data: {
+        title: "::AreYouSure",
+        description: "::AreYouSureToDelete"
+      }
+    });
+
+    confirmationDialogRef.afterClosed().subscribe((confirmationResult) => {
+      if(confirmationResult){
+        this.flightService.delete(id).subscribe(()=>this.list.get())
+      }
     });
   }
   
