@@ -33,7 +33,7 @@ function configureRoutes(routesService: RoutesService) {
         path: "/passengers",
         name: "::Menu:Passengers",
         parentName: "::Menu:FlightControl",
-        iconClass: "fa fa-building",
+        iconClass: "fa fa-user",
         layout: eLayoutType.application,
       },
       {

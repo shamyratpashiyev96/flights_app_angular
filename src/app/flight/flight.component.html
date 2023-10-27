@@ -76,3 +76,10 @@
     </mat-card-content>
 </mat-card>
 
+<mat-menu #menu="matMenu">
+    <ng-template matMenuContent let-id="id">
+        <button mat-menu-item (click)="editFlight(id)">
+            {{ '::Edit' | abpLocalization }}
+        </button>
+    </ng-template>
+</mat-menu>

@@ -14,7 +14,7 @@ import { FlightDialogComponent } from './components/flight-dialog/flight-dialog.
 export class FlightComponent implements OnInit{
 
   flight = { items: [], totalCount: 0 } as PagedResultDto<FlightDto>;
-  columns: string[] = ['origin', 'destination','departureDate','arrivalDate'];
+  columns: string[] = ['actions','origin', 'destination','departureDate','arrivalDate'];
 
   constructor(
     public readonly list : ListService,
@@ -56,6 +56,19 @@ export class FlightComponent implements OnInit{
           this.list.get();
         });
       }
+    });
+  }
+
+  editFlight(id:number){
+    this.flightService.get(id).subscribe((flightObj)=>{
+      const dialogRef = this.dialog.open(FlightDialogComponent,{data:flightObj});
+      dialogRef.afterClosed().subscribe((result) => {
+        if(result){
+          this.flightService.update(id,result).subscribe(() =>{
+            this.list.get();
+          });
+        }
+      });
     });
   }
   

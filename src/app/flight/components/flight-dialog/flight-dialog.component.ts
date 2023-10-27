@@ -37,10 +37,10 @@ export class FlightDialogComponent implements OnInit{
 
   buildForm(){
     this.form = this.fb.group({
-      originId: [null, Validators.required],
-      destinationId: [null, Validators.required],
-      departureDate: [null, Validators.required],
-      arrivalDate: [null, Validators.required]
+      originId: [this.data?.originId, Validators.required],
+      destinationId: [this.data?.destinationId, Validators.required],
+      departureDate: [this.data?.departureDate, Validators.required],
+      arrivalDate: [this.data?.arrivalDate, Validators.required]
     });
   }
 
