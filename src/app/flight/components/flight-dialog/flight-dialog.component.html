@@ -1,0 +1,37 @@
+<h2 mat-dialog-title>
+    {{ '::NewFlight' | abpLocalization }}
+</h2>
+<mat-dialog-content>
+    <form [formGroup]="form" class="form-container">
+        <mat-form-field class="w-100">
+            <mat-label>{{ '::Origin' | abpLocalization }} <span> * </span></mat-label>
+            <mat-select formControlName="originId">
+                <mat-option [value]="airport.id" *ngFor="let airport of airports">{{ airport.city }}</mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <mat-form-field class="w-100">
+            <mat-label>{{ '::Destination' | abpLocalization }} <span> * </span></mat-label>
+            <mat-select formControlName="destinationId">
+                <mat-option [value]="airport.id" *ngFor="let airport of airports">{{ airport.city }}</mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <ng-container>
+            <mat-label>{{ '::DepartureDate' | abpLocalization }} <span> * </span></mat-label>
+            <input type="datetime-local" class="mat-form-field" MatFormFieldControl formControlName="departureDate" />
+        </ng-container>
+        <br />
+        <br />
+        <ng-container>
+            <mat-label>{{ '::ArrivalDate' | abpLocalization }} <span> * </span></mat-label>
+            <input type="datetime-local" class="mat-form-field" MatFormFieldControl formControlName="arrivalDate" />
+        </ng-container>
+    </form>
+</mat-dialog-content>
+<mat-dialog-actions>
+    <button mat-button mat-dialog-close>{{ '::Close' | abpLocalization }}</button>
+    <button mat-raised-button color="primary" [mat-dialog-close]="getFormValue()">
+        {{ '::Save' | abpLocalization }}
+    </button>
+</mat-dialog-actions>

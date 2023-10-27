@@ -10,7 +10,7 @@ import { AirportDto } from '@proxy/airports';
   providers: [
     {
       provide: MAT_DIALOG_DEFAULT_OPTIONS,
-      useValue: { hasBackdrop: true, width: '50vw',display:'none'},
+      useValue: { hasBackdrop: true, width: '50vw'},
     }
   ]
 })

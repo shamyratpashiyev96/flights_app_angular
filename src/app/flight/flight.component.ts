@@ -1,8 +1,10 @@
 import { ListService, PagedResultDto } from '@abp/ng.core';
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { PageEvent } from '@angular/material/paginator';
 import { Sort } from '@angular/material/sort';
 import { FlightDto, FlightService } from '@proxy/flights';
+import { FlightDialogComponent } from './components/flight-dialog/flight-dialog.component';
 
 @Component({
   selector: 'app-flight',
@@ -16,7 +18,8 @@ export class FlightComponent implements OnInit{
 
   constructor(
     public readonly list : ListService,
-    private flightService: FlightService
+    private flightService: FlightService,
+    public dialog: MatDialog
   ){
     this.list.maxResultCount = 2;
   }
@@ -44,5 +47,16 @@ export class FlightComponent implements OnInit{
     return new Date(date).toLocaleString("ru-RU");
   }
 
+  createFlight(){
+    const dialogRef = this.dialog.open(FlightDialogComponent);
+
+    dialogRef.afterClosed().subscribe((result) => {
+      if(result){
+        this.flightService.create(result).subscribe(() =>{
+          this.list.get();
+        });
+      }
+    });
+  }
   
 }
